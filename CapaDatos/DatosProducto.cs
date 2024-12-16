@@ -1,46 +1,128 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    internal class producto
+    public class DatosProducto
     {
-        public class ProductoRepository
+        private readonly string connectionString;
+
+        public DatosProducto(string connString)
         {
-            private readonly BoticaContext _context;
+            connectionString = connString;
+        }
 
-            public object EntityState { get; private set; }
-
-            public ProductoRepository(BoticaContext context)
+        // Método para agregar un nuevo producto  
+        public void AgregarProducto(string nombre, string descripcion, decimal precio, int stock)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                _context = context;
-            }
+                string query = "INSERT INTO Productos (Nombre, Descripcion, Precio, Stock) VALUES (@Nombre, @Descripcion, @Precio, @Stock)";
+                SqlCommand command = new SqlCommand(query, connection);
 
-            public IEnumerable<Producto> ObtenerTodos() => _context.Productos.Include(p => p.Categoria).Include(p => p.Proveedor).ToList();
+                command.Parameters.AddWithValue("@Nombre", nombre);
+                command.Parameters.AddWithValue("@Descripcion", descripcion);
+                command.Parameters.AddWithValue("@Precio", precio);
+                command.Parameters.AddWithValue("@Stock", stock);
 
-            public Producto ObtenerPorId(int id) => _context.Productos.Include(p => p.Categoria).Include(p => p.Proveedor).FirstOrDefault(p => p.Id == id);
-
-            public void Agregar(Producto producto)
-            {
-                object value = _context.Productos.Add(producto);
-                _context.SaveChanges();
-            }
-
-            public void Actualizar(Producto producto)
-            {
-                _context.Entry(producto).State = EntityState;
-                _context.SaveChanges();
-            }
-
-            public void Eliminar(int id)
-            {
-                var producto = _context.Productos.Find(id);
-                if (producto != null)
+                try
                 {
-                    object value = _context.Productos.Remove(producto);
-                    _context.SaveChanges();
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("Error al agregar producto: " + ex.Message);
+                }
+            }
+        }
+
+        // Método para obtener todos los productos  
+        public List<Dictionary<string, object>> ObtenerProductos()
+        {
+            List<Dictionary<string, object>> productos = new List<Dictionary<string, object>>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Productos";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        var producto = new Dictionary<string, object>
+                        {
+                            { "IdProducto", reader["IdProducto"] },
+                            { "Nombre", reader["Nombre"] },
+                            { "Descripcion", reader["Descripcion"] },
+                            { "Precio", reader["Precio"] },
+                            { "Stock", reader["Stock"] }
+                        };
+
+                        productos.Add(producto);
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("Error al obtener productos: " + ex.Message);
+                }
+            }
+
+            return productos;
+        }
+
+        // Método para actualizar un producto existente  
+        public void ActualizarProducto(int idProducto, string nombre, string descripcion, decimal precio, int stock)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Productos SET Nombre = @Nombre, Descripcion = @Descripcion, Precio = @Precio, Stock = @Stock WHERE IdProducto = @IdProducto";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@IdProducto", idProducto);
+                command.Parameters.AddWithValue("@Nombre", nombre);
+                command.Parameters.AddWithValue("@Descripcion", descripcion);
+                command.Parameters.AddWithValue("@Precio", precio);
+                command.Parameters.AddWithValue("@Stock", stock);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("Error al actualizar producto: " + ex.Message);
+                }
+            }
+        }
+
+        // Método para eliminar un producto  
+        public void EliminarProducto(int idProducto)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "DELETE FROM Productos WHERE IdProducto = @IdProducto";
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@IdProducto", idProducto);
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("Error al eliminar producto: " + ex.Message);
                 }
             }
         }
