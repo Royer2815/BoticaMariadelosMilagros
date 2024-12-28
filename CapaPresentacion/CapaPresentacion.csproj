@@ -122,8 +122,9 @@
     <Compile Include="App_Start\BundleConfig3.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\EmpleadoController.cs" />
-    <Compile Include="Controllers\IntranetController.cs" />
+    <Compile Include="Controller\AuthController.cs" />
+    <Compile Include="Controller\EmpleadoController.cs" />
+    <Compile Include="Controller\IntranetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -155,6 +156,8 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Intranet\InicioSesion.cshtml" />
+    <Content Include="Intranet\MenuPrincipal.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -183,7 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\" />
+    <Folder Include="Controller\Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Empleado\" />
     <Folder Include="Views\Intranet\" />
