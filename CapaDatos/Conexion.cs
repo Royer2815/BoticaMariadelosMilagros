@@ -19,7 +19,7 @@ class Conexion
                 
                 SqlCommand command = new SqlCommand("SELECT * from Empleado", connection);
                 SqlDataReader reader = command.ExecuteReader();
-
+                //probando un comentario saul caro
                 while (reader.Read())
                 {
                     Console.WriteLine(reader[0].ToString()); 
