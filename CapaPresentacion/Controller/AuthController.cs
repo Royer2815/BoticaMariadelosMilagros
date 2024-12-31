@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 
 namespace CapaPresentacion.Controllers
 {
+    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class AuthController : Controller
     {
-        // GET: Auth/InicioSesion  
-        public ActionResult InicioSesion()
+        private readonly EmpleadoService _empleadoService;
+
+        public AuthController()
         {
             return View(); // Devuelve la vista de inicio de sesión  
         }
+
+        // GET: Auth/InicioSesion  
+        public ActionResult InicioSesion1 => View();
 
         [HttpPost]
         [ValidateAntiForgeryToken]
