@@ -6,7 +6,7 @@ using System.Web.Routing;
 namespace CapaPresentacion
 {
     [DebuggerDisplay("{GetDebuggerDisplay(),nq}")]
-    public class RouteConfigBase1 : RouteConfigBase1Base
+    public class RouteConfigBase1 : RouteConfigBase
     {
 
         public static void RegisterRoutes(RouteCollection routes)
