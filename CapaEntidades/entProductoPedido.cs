@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace CapaEntidades
 {
-    public class EntProductoPedido
+    public class CapaEntidades
     {
         public int IdProducto { get; set; }      // Identificación del producto  
         public int Cantidad { get; set; }        // Cantidad del producto en el pedido  
         public decimal Precio { get; set; }      // Precio del producto al momento del pedido  
 
         // Constructor opcional  
-        public EntProductoPedido() { }
 
         // Método para calcular el total de este producto en el pedido  
         public decimal CalcularTotalProducto()
