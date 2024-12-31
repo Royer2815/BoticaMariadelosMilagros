@@ -124,6 +124,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controller\AuthController.cs" />
     <Compile Include="Controller\EmpleadoController.cs" />
+    <Compile Include="Controller\EmpleadoService.cs" />
     <Compile Include="Controller\IntranetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

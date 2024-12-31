@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 
 namespace CapaPresentacion.Controllers
 {
@@ -15,10 +15,7 @@ namespace CapaPresentacion.Controllers
         }
 
         // GET: Auth/InicioSesion  
-        public ActionResult InicioSesion()
-        {
-            return View(); // Devuelve la vista de inicio de sesión  
-        }
+        public ActionResult InicioSesion1 => View();
 
         [HttpPost]
         [ValidateAntiForgeryToken]
