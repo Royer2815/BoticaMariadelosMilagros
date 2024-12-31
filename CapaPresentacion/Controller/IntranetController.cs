@@ -4,43 +4,31 @@
 
 using System.Web.Mvc;
 
-namespace CapaPresentacion.Controllers
+namespace TuEspacioDeNombres.Controllers
 {
     public class IntranetController : Controller
     {
-        private readonly ProductoService _productoService;
-        private readonly EmpleadoService _empleadoService;
-
-        public IntranetController()
+        public ActionResult InicioSesion()
         {
-            _productoService = new ProductoService(); // Inicializa el servicio de productos  
-            _empleadoService = new EmpleadoService(); // Inicializa el servicio de empleados  
+            return View();
         }
 
-        // GET: Intranet/Dashboard  
-        public ActionResult Dashboard()
+        public ActionResult MenuPrincipal()
         {
-            var totalProductos = _productoService.ObtenerTotalProductos(); // Obtén el total de productos  
-            var totalEmpleados = _empleadoService.ObtenerTotalEmpleados(); // Obtén el total de empleados  
+            // Verifica que el usuario esté autenticado antes de mostrar el menú.  
+            // Aquí puedes usar Session o cualquier otra lógica.  
+            if (Session["EmpleadoNombre"] == null)
+            {
+                return RedirectToAction("InicioSesion");
+            }
 
-            ViewBag.TotalProductos = totalProductos; // Envía el total de productos a la vista  
-            ViewBag.TotalEmpleados = totalEmpleados; // Envía el total de empleados a la vista  
-
-            return View(); // Devuelve la vista del dashboard  
+            return View();
         }
 
-        // GET: Intranet/Productos  
-        public ActionResult Productos()
+        public ActionResult CerrarSesion()
         {
-            var productos = _productoService.ObtenerProductos(); // Obtiene la lista de productos  
-            return View(productos); // Devuelve la vista con la lista de productos  
-        }
-
-        // GET: Intranet/Empleados  
-        public ActionResult Empleados()
-        {
-            var empleados = _empleadoService.ObtenerEmpleados(); // Obtiene la lista de empleados  
-            return View(empleados); // Devuelve la vista con la lista de empleados  
+            Session.Clear(); // O cualquier otra lógica para cerrar sesión  
+            return RedirectToAction("InicioSesion");
         }
     }
 }

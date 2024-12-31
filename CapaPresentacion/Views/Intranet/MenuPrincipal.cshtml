@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Menú Principal";
+}
+
+<h2>Bienvenido al Menú Principal</h2>
+
+<p>Bienvenido, @Session["EmpleadoNombre"].</p>
+
+<ul>
+    <li>@Html.ActionLink("Dashboard", "Dashboard", "Intranet")</li>
+    <li>@Html.ActionLink("Productos", "Productos", "Intranet")</li>
+    <li>@Html.ActionLink("Empleados", "Empleados", "Intranet")</li>
+    <li>@Html.ActionLink("Cerrar Sesión", "CerrarSesion", "Intranet")</li>
+</ul>

@@ -187,13 +187,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Intranet\.editorconfig" />
+    <Content Include="Views\Intranet\InicioSesion.cshtml" />
+    <Content Include="Views\Intranet\MenuPrincipal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controller\Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Empleado\" />
-    <Folder Include="Views\Intranet\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
