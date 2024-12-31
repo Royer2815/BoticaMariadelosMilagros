@@ -8,7 +8,14 @@ namespace CapaPresentacion.Controllers
         {
         }
 
-        internal bool Autenticar(string usuario, string contrasena)
+        internal bool Autenticar(string usuario, string contrasena) => throw new NotImplementedException();
+
+        internal object ObtenerEmpleados()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal dynamic ObtenerTotalEmpleados()
         {
             throw new NotImplementedException();
         }

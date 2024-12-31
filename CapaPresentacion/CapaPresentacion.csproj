@@ -126,6 +126,7 @@
     <Compile Include="Controller\EmpleadoController.cs" />
     <Compile Include="Controller\EmpleadoService.cs" />
     <Compile Include="Controller\IntranetController.cs" />
+    <Compile Include="Controller\ProductoService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

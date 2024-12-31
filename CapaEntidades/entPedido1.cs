@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+
+
+
+
 
 namespace CapaEntidades
 {
@@ -58,5 +60,10 @@ namespace CapaEntidades
         public int IdProducto { get; set; }    // Identificación del producto  
         public int Cantidad { get; set; }      // Cantidad del producto en el pedido  
         public decimal Precio { get; set; }     // Precio del producto al momento del pedido  
+
+        internal decimal CalcularTotalProducto()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
