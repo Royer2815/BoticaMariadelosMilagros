@@ -1,13 +1,14 @@
 ﻿
+using System;
 using System.Web.Mvc;
 
 namespace CapaPresentacion.Controllers
 {
-    public class EmpleadoController : Controller
+    public class EmpleadoControllers : EmpleadoControllers
     {
         private readonly EmpleadoService _empleadoService;
 
-        public EmpleadoController()
+        public EmpleadoControllers()
         {
             _empleadoService = new EmpleadoService(); // Inicializa el servicio de empleados  
         }
@@ -17,6 +18,11 @@ namespace CapaPresentacion.Controllers
         {
             var empleados = _empleadoService.ObtenerEmpleados(); // Obtiene la lista de empleados  
             return View(empleados); // Devuelve la vista con la lista de empleados  
+        }
+
+        private ActionResult View(object empleados)
+        {
+            throw new NotImplementedException();
         }
 
         // Otras acciones como Create, Edit, Delete...  

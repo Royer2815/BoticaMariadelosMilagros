@@ -1,10 +1,11 @@
+using System;
 using System.Diagnostics;
 using System.Web.Mvc;
 
 namespace CapaPresentacion.Controllers
 {
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
-    public class AuthController : Controller
+    public class AuthController : EmpleadoControllers, IAuthController1
     {
         private readonly EmpleadoService _empleadoService;
 
@@ -16,6 +17,11 @@ namespace CapaPresentacion.Controllers
         // GET: Auth/InicioSesion  
         public ActionResult InicioSesion1 => View();
 
+        private ActionResult View()
+        {
+            throw new NotImplementedException();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult InicioSesion(string usuario, string contrasena)
@@ -26,7 +32,8 @@ namespace CapaPresentacion.Controllers
                 return RedirectToAction("MenuPrincipal", "Intranet"); // Redirige si la autenticación es exitosa  
             }
 
-            ModelState.AddModelError("", "Usuario o contraseña incorrectos."); // Muestra error en caso de fallo  
+            object value = ModelState.AddModelError("",
+                "Usuario o contraseña incorrectos."); // Muestra error en caso de fallo  
             return View();
         }
 
@@ -37,9 +44,10 @@ namespace CapaPresentacion.Controllers
             return RedirectToAction("InicioSesion", "Auth"); // Redirige al inicio de sesión  
         }
 
-        private string GetDebuggerDisplay()
+        private ActionResult RedirectToAction(string v1, string v2)
         {
-            return ToString();
+            throw new NotImplementedException();
         }
+
+        private string GetDebuggerDisplay() => this.ToString();
     }
-}
