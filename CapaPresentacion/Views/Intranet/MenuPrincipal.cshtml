@@ -2,13 +2,97 @@
     ViewBag.Title = "Menú Principal";
 }
 
-<h2>Bienvenido al Menú Principal</h2>
+<main class="menu-principal">
+    <h1>Bienvenido al Menú Principal</h1>
 
-<p>Bienvenido, @Session["EmpleadoNombre"].</p>
+    <p>Hola, <strong>@Session["EmpleadoNombre"]</strong>. Elige una opción para continuar:</p>
 
-<ul>
-    <li>@Html.ActionLink("Dashboard", "Dashboard", "Intranet")</li>
-    <li>@Html.ActionLink("Productos", "Productos", "Intranet")</li>
-    <li>@Html.ActionLink("Empleados", "Empleados", "Intranet")</li>
-    <li>@Html.ActionLink("Cerrar Sesión", "CerrarSesion", "Intranet")</li>
-</ul>  
+    <div class="menu-grid">
+        <div class="menu-item">
+            <a href="@Url.Action("Dashboard", "Intranet")">
+                <img src="/Content/Images/dashboard-icon.png" alt="Dashboard" />
+                <span>Dashboard</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="@Url.Action("Productos", "Intranet")">
+                <img src="/Content/Images/products-icon.png" alt="Productos" />
+                <span>Productos</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="@Url.Action("Empleados", "Intranet")">
+                <img src="/Content/Images/employees-icon.png" alt="Empleados" />
+                <span>Empleados</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="@Url.Action("CerrarSesion", "Intranet")">
+                <img src="/Content/Images/logout-icon.png" alt="Cerrar Sesión" />
+                <span>Cerrar Sesión</span>
+            </a>
+        </div>
+    </div>
+</main>
+
+<!-- Opcional: Estilos CSS -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu-principal {
+        text-align: center;
+        padding: 20px;
+    }
+
+        .menu-principal h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+
+    .menu-item {
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+        padding: 15px;
+    }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item img {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 10px;
+        }
+
+        .menu-item span {
+            display: block;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+</style>

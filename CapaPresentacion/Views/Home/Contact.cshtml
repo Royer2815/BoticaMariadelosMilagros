@@ -1,19 +1,60 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Contacto";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Ajusta según tu estructura de proyecto
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
+<main aria-labelledby="contact-title" class="contact-page">
+    <h1 id="contact-title">@ViewBag.Title</h1>
+    <p>Para cualquier consulta o soporte, no dudes en contactarnos utilizando la información a continuación.</p>
 
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
+    <section class="contact-info">
+        <h2>Soporte</h2>
+        <ul>
+            <li>
+                <strong>Correo Electrónico:</strong>
+                <a href="mailto:72278816@ijamvirtual.edu.pe">72278816@ijamvirtual.edu.pe</a>
+            </li>
+            <li>
+                <strong>Celular:</strong>
+                <a href="https://wa.me/51981925517" target="_blank" rel="noopener noreferrer">+51 981 925 517</a>
+            </li>
+            <li>
+                <strong>WhatsApp:</strong>
+                <a href="https://wa.me/51981925517" target="_blank" rel="noopener noreferrer">Chatea con nosotros</a>
+            </li>
+        </ul>
+    </section>
 
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
+    <section class="map-location">
+        <h2>Ubicación</h2>
+        <p>Si necesitas visitarnos, por favor contacta con nosotros para más detalles.</p>
+        <!-- Puedes agregar un iframe de Google Maps aquí -->
+    </section>
 </main>
+
+<!-- Opcional: Estilos CSS -->
+<style>
+    .contact-page {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        padding: 10px;
+    }
+
+    .contact-info ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .contact-info li {
+        margin: 10px 0;
+    }
+
+    .contact-info a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+</style>

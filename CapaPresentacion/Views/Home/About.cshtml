@@ -1,10 +1,35 @@
-﻿@{
-    ViewBag.Title = "About";
+﻿@model dynamic
+@{
+    ViewBag.Title = "Acerca de";
 }
 
+<main>
+    <h1>@ViewBag.Title</h1>
+    <p>Bienvenido a <strong>Botica María De Los Milagros</strong>. Aquí encontrarás información sobre quiénes somos y qué nos inspira.</p>
 
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
-    <p>Use this area to provide additional information.</p>
-</main>  
+    <section>
+        <h2>Nuestra Misión</h2>
+        <p>Ofrecer productos farmacéuticos de calidad con un enfoque en el bienestar y la salud de nuestros clientes, brindando un servicio humano y profesional.</p>
+    </section>
+
+    <section>
+        <h2>Nuestra Visión</h2>
+        <p>Ser la botica líder en la comunidad, reconocida por su compromiso con la excelencia, la innovación y el servicio al cliente.</p>
+    </section>
+
+    <section>
+        <h2>Nuestros Valores</h2>
+        <ul>
+            <li><strong>Compromiso:</strong> Dedicación total al bienestar de nuestros clientes.</li>
+            <li><strong>Calidad:</strong> Garantizar productos y servicios de la más alta calidad.</li>
+            <li><strong>Confianza:</strong> Generar relaciones basadas en la transparencia y la honestidad.</li>
+            <li><strong>Innovación:</strong> Buscar constantemente nuevas formas de mejorar y servir mejor.</li>
+            <li><strong>Respeto:</strong> Tratar a todos con igualdad, dignidad y cortesía.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Contacto</h2>
+        <p>Para más información, visita nuestra <a href="/Home/Contact">página de contacto</a>.</p>
+    </section>
+</main>
