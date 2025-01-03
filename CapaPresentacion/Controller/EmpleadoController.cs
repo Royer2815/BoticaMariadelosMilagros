@@ -4,11 +4,11 @@ using System.Web.Mvc;
 
 namespace CapaPresentacion.Controllers
 {
-    public class EmpleadoControllers : EmpleadoControllers
+    public class EmpleadoController : EmpleadoControllers
     {
         private readonly EmpleadoService _empleadoService;
 
-        public EmpleadoControllers()
+        public EmpleadoController()
         {
             _empleadoService = new EmpleadoService(); // Inicializa el servicio de empleados  
         }

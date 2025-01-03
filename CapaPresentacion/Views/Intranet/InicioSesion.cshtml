@@ -1,14 +1,20 @@
-﻿[HttpPost]
-[ValidateAntiForgeryToken]
-public IActionResult InicioSesion(string usuario, string contrasena)
-{
-    // Verifica las credenciales del usuario
-    if (_empleadoService.Autenticar(usuario, contrasena))
-    {
-        return RedirectToAction("MenuPrincipal", "Intranet"); // Redirige si la autenticación es exitosa
-    }
+﻿@{
+    ViewBag.Title = "Inicio de Sesión";
+}
 
-    // Muestra error en caso de fallo
-    ModelState.AddModelError(string.Empty, "Usuario o contraseña incorrectos.");
-    return View(); // Retorna a la vista de inicio de sesión
+<h2>Inicio de Sesión</h2>
+
+@using (Html.BeginForm("InicioSesion", "Intranet", FormMethod.Post))
+{
+    <div>
+        @Html.Label("Nombre de Usuario")
+        @Html.TextBox("usuario")
+    </div>
+    <div>
+        @Html.Label("Contraseña")
+        @Html.Password("contraseña")
+    </div>
+    <input type="submit" value="Iniciar Sesión" />
+
+    <div>@ViewBag.Error</div>
 }  

@@ -4,36 +4,30 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 
-namespace CapaPresentacion.Controller
+namespace CapaPresentacion.Controllers // Asegúrate de que la carpeta se llama Controllers  
 {
-    public class HomeController : ApiController
+    public class HomeController : Controller // Cambia ApiController a Controller  
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        // Acción para la vista principal  
+        public ActionResult Index()
         {
-            return new string[] { "value1", "value2" };
+            return View();
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        // Acción para la vista Acerca de  
+        public ActionResult About()
         {
-            return "value";
+            ViewBag.Message = "Descripción de tu aplicación."; // Mensaje que se mostrará en la vista  
+            return View(); // Asegúrate de que exista la vista About.cshtml  
         }
 
-        // POST api/<controller>
-        public void Post([FromBody] string value)
+        // Acción para la vista de Contacto  
+        public ActionResult Contact()
         {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+            ViewBag.Message = "Tu página de contacto.";
+            return View(); // Asegúrate de que exista la vista Contact.cshtml  
         }
     }
 }

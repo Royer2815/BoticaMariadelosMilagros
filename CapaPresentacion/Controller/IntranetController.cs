@@ -4,31 +4,41 @@
 
 using System.Web.Mvc;
 
+
 namespace TuEspacioDeNombres.Controllers
 {
     public class IntranetController : Controller
     {
+        // Acción para mostrar la vista de inicio de sesión  
         public ActionResult InicioSesion()
         {
             return View();
         }
 
-        public ActionResult MenuPrincipal()
+        // Acción para manejar el inicio de sesión  
+        [HttpPost]
+        public ActionResult InicioSesion(string usuario, string contraseña)
         {
-            // Verifica que el usuario esté autenticado antes de mostrar el menú.  
-            // Aquí puedes usar Session o cualquier otra lógica.  
-            if (Session["EmpleadoNombre"] == null)
+            // Lógica de autenticación (simplificada)  
+            if (usuario == "admin" && contraseña == "password") // Cambia esto a tu lógica real de autenticación  
             {
-                return RedirectToAction("InicioSesion");
+                Session["EmpleadoNombre"] = usuario; // Almacena el nombre del usuario en la sesión  
+                return RedirectToAction("MenuPrincipal"); // Redirige al menú principal  
             }
 
-            return View();
+            ViewBag.Error = "Usuario o contraseña incorrecto."; // Mensaje de error  
+            return View(); // Regresa a la vista de inicio de sesión  
         }
 
-        public ActionResult CerrarSesion()
+        // Acción para mostrar el menú principal  
+        public ActionResult MenuPrincipal()
         {
-            Session.Clear(); // O cualquier otra lógica para cerrar sesión  
-            return RedirectToAction("InicioSesion");
+            if (Session["EmpleadoNombre"] == null)
+            {
+                return RedirectToAction("InicioSesion"); // Redirige a inicio de sesión si no hay sesión  
+            }
+
+            return View(); // Regresa a la vista del menú principal  
         }
     }
 }

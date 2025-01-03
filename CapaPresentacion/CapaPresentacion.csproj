@@ -142,15 +142,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\RouteConfigBase.cs" />
-    <Compile Include="App_Start\RouteConfigBase1.cs" />
-    <Compile Include="Controller\AuthController.cs" />
     <Compile Include="Controller\ControllerS.cs" />
     <Compile Include="Controller\EmpleadoController.cs" />
+    <Compile Include="Controller\EmpleadoControllers.cs" />
     <Compile Include="Controller\EmpleadoService.cs" />
     <Compile Include="Controller\HomeController.cs" />
     <Compile Include="Controller\IActionResult.cs" />
-    <Compile Include="Controller\IAuthController.cs" />
-    <Compile Include="Controller\IAuthController1.cs" />
     <Compile Include="Controller\IntranetController.cs" />
     <Compile Include="Controller\ProductoService.cs" />
     <Compile Include="Global.asax.cs">

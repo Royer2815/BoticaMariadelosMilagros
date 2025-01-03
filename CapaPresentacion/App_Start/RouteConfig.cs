@@ -5,13 +5,18 @@ using System.Web.Routing;
 
 namespace CapaPresentacion
 {
-    [DebuggerDisplay("{" + nameof(DebuggerDisplay ) + "(),nq}")]
-    public class RouteConfig : RouteConfigBase1
+    public class RouteConfig
     {
-        public RouteConfig()
+        public static void RegisterRoutes(RouteCollection routes)
         {
-        }
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-        private static object DebuggerDisplay => throw new NotImplementedException();
+            // Define la ruta predeterminada  
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Intranet", action = "InicioSesion", id = UrlParameter.Optional }
+            );
+        }
     }
 }
